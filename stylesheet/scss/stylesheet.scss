@@ -1,0 +1,34 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  min-width: 320px;
+}
+
+@media (min-width: 992px) and (min-width: 1200px){
+  .container {
+    width: 100%;
+    max-width: 1440px;
+    background-color: red;
+    margin: 0 auto;
+  }
+
+  #content {
+    width: 66%;
+    margin: 0 auto;
+  }
+  .headline-grid-container{
+
+  }
+
+  .job-listing-strip{
+
+    .job-title {
+      display: block;
+    }
+
+    .job-details {
+      display: block;
+    }
+  }
+}

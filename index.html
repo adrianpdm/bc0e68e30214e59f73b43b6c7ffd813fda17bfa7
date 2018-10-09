@@ -2,19 +2,74 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-  <title>Welcome to Vue</title>
+    <title>Welcome to Vue</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="stylesheet/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="stylesheet/css/stylesheet.css" rel="stylesheet">
 </head>
 <body>
-  <div id="main">
-    
-  </div>
+<div id="main" class="container">
+    <div id="content">
+    <headline-grid headline-title="What We Do">
 
-  <script>
-    new Vue({
-      el: '#main',
-    })
-  </script>
+    </headline-grid>
+    <headline-grid headline-title="Explore Opportunities">
+
+    </headline-grid>
+    </div>
+</div>
+
+<script>
+	const HeadlineGrid = {
+		props: {
+			headlineTitle: String,
+		},
+		template:
+		//@formatter:off
+        `<div class="row">` +
+            `<div class="col-md-4">{{headlineTitle}}</div>` +
+            `<div class="col-md-8"><slot name='content'></slot></div>` +
+        `</div>`
+        //@formatter:on
+	}
+
+	const JobListingStrip = {
+		props: ['jobTitle', 'jobClass', 'contract', 'location'],
+        template:
+        //@formatter:off
+            `<div class="row job-listing-strip">` +
+                `<div class="col-md-8">`+
+                `<span class="job-title">{{jobTitle}}</span>`+
+                `<span class="job-details">{{jobClass}} + " \u2022 " + {{contract}} + " \u2022 " + {{location}}</span>`
+                `</div>`+
+                `<div class="col-md-4"></div>`+
+            `</div>`
+		//@formatter:on
+    }
+
+	const wwd_strings =
+        `Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". `+
+        `We want to be customer's default meal option by providing quality product with on-time delivery. ` +
+        `We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
+        `<br><br>` +
+        `We took pride in being the first food tech startup to join "Google Launchpad Accelerator" in San Francisco, and the only on from Indonesia in winter 2018. ` +
+        `Our startup is backed by the same investor who invested in Ele.me (China's unicorn food delivery startup). ` +
+        `<br><br>` +
+        `Join us in our mission to delivering the best meals to ten millions of Jakartans. ` +
+        `Hurry! Be part of our Kulinas family.`
+
+	new Vue({
+		el: "#main",
+        data: function(){
+			return {
+			    wwd_strings
+            }
+        },
+		components: {
+			"headline-grid": HeadlineGrid
+		}
+	})
+</script>
 </body>
 </html>
