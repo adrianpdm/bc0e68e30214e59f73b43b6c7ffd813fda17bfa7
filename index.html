@@ -4,19 +4,19 @@
 <head>
     <title>Welcome to Vue</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="stylesheet/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link href="stylesheet/css/bootstrap.min.css" rel="stylesheet">
     <link href="stylesheet/css/stylesheet.css" rel="stylesheet">
 </head>
 <body>
 <div id="main" class="container">
     <div id="content">
-        <headline-grid headline-title="What We Do">
+        <headline-grid headline-title="What We Do" style="background-color: white">
             <template slot="content">
-                <span v-html="wwd_strings"></span>
+                <span class="description" v-html="wwd_strings"></span>
             </template>
         </headline-grid>
-        <headline-grid headline-title="Explore Opportunities">
+        <headline-grid headline-title="Explore Opportunities" style="background-color: #fcfcfc">
             <template slot="content">
                 <job-listing-strip
                         v-for="(item, i) in availableJobs"
@@ -29,45 +29,31 @@
             </template>
         </headline-grid>
     </div>
+    <div id="footer">
+        <div id="copyright-notes">
+            <span>Made with <img class="heart-image" src="static/heart.png">  from Indonesia. &nbsp;</span>
+            <span>&#xa9 Kulina, 2018. All Rights Reserved.</span>
+        </div>
+        <div id="social-buttons">
+            <span>Follow kami &nbsp;</span>
+            <social-media-button
+                    v-for="(item, i) in socialMediaList"
+                    :key="`icon-${i}`"
+                    :name="item.name"
+                    :link="item.link"
+                    :icon="item.img">
+            </social-media-button>
+        </div>
+    </div>
 </div>
 
+<script src="component/HeadlineGrid.js"></script>
+<script src="component/JobListingStrip.js"></script>
+<script src="component/JobApplyButton.js"></script>
+<script src="component/SocialMediaButton.js"></script>
 <script src="AvailableJobs.js"></script>
 <script>
-	const HeadlineGrid = {
-		props: {
-			headlineTitle: String,
-		},
-		template:
-		//@formatter:off
-        `<div class="row">` +
-            `<div class="col-md-4">{{headlineTitle}}</div>` +
-            `<div class="col-md-8"><slot name='content'></slot></div>` +
-        `</div>`
-        //@formatter:on
-	}
-
-	console.log(availableJobs)
-
-	const JobListingStrip = {
-		props: {
-			title: String,
-			classification: String,
-			contract: String,
-			location: String
-		},
-		template:
-		//@formatter:off
-            `<div class="row job-listing-strip">` +
-                `<div class="col-md-8">`+
-                `<span class="job-title">{{title}}</span>`+
-                `<span class="job-details">{{classification + " \u2022 " + contract + " \u2022 " + location}}</span>`+
-                `</div>`+
-                `<div class="col-md-4"></div>`+
-            `</div>`
-		//@formatter:on
-	}
-
-	const wwd_strings =
+		const wwd_strings =
 		`Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". ` +
 		`We want to be customer's default meal option by providing quality product with on-time delivery. ` +
 		`We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
@@ -83,12 +69,14 @@
 		data: function() {
 			return {
 				wwd_strings,
-				availableJobs
+				availableJobs,
+                socialMediaList: SocialMediaList
 			}
 		},
 		components: {
 			"headline-grid": HeadlineGrid,
-			"job-listing-strip": JobListingStrip
+			"job-listing-strip": JobListingStrip,
+            "social-media-button": SocialMediaButton
 		}
 	})
 </script>
