@@ -20,14 +20,14 @@
     <section id="header">
         <nav-bar></nav-bar>
         <div class="greetings">
-            <span>Join an Impactful Company</span>
+            <span>{{s_joinImpact}}</span>
         </div>
     </section>
     <section id="content">
-        <headline-grid headline-title="What We Do" style="background-color: white">
-            <span class="description" v-html="wwd_strings"></span>
+        <headline-grid :headline-title="s_whatWeDo" style="background-color: white">
+            <span class="description" v-html="s_whatWeDo_desc"></span>
         </headline-grid>
-        <headline-grid headline-title="Explore Opportunities" style="background-color: #fcfcfc">
+        <headline-grid :headline-title="s_exploreOpp" style="background-color: #fcfcfc">
             <job-listing-strip
                     v-for="(item, i) in availableJobs"
                     :key="`job-${i}`"
@@ -61,35 +61,28 @@
 <script src="./component/JobListingStrip.js"></script>
 <script src="./component/JobApplyButton.js"></script>
 <script src="./component/SocialMediaButton.js"></script>
-<script src="./AvailableJobs.js"></script>
+<script src="./js/AvailableJobs.js"></script>
+<script src="./js/Strings.js"></script>
 <script>
-	const wwd_strings =
-		`Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". ` +
-		`We want to be customer's default meal option by providing quality product with on-time delivery. ` +
-		`We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
-		`<br><br>` +
-		`We took pride in being the first food tech startup to join "Google Launchpad Accelerator" in San Francisco, and the only on from Indonesia in winter 2018. ` +
-		`Our startup is backed by the same investor who invested in Ele.me (China's unicorn food delivery startup). ` +
-		`<br><br>` +
-		`Join us in our mission to delivering the best meals to ten millions of Jakartans. ` +
-		`Hurry! Be part of our Kulinas family.`
-
-    $(window).on("scroll", function(){
-		let headerHeight = $("#header").height();
-		let scrollPosition = $(window).scrollTop();
+	$(window).on("scroll", function() {
+		let headerHeight = $("#header").height()
+		let scrollPosition = $(window).scrollTop()
 		let diff = 1 - ((headerHeight - scrollPosition) / headerHeight)
 		let opacity = Math.min(.75, diff)
 		console.log(opacity)
 		$(".navbar-background").css({"opacity": opacity})
-        $(".greetings").css({"opacity": 1 - opacity})
-    })
+		$(".greetings").css({"opacity": 1 - opacity})
+	})
 
 	new Vue({
 		el: "#main",
 		data: function() {
 			return {
 				menuList: NavigationMenuList,
-				wwd_strings,
+                s_joinImpact: Strings.JoinImpact,
+                s_whatWeDo: Strings.WhatWeDo,
+				s_whatWeDo_desc: Strings.WhatWeDo_desc,
+                s_exploreOpp: Strings.ExploreOpp,
 				availableJobs,
 				socialMediaList: SocialMediaList
 			}

@@ -1,4 +1,9 @@
 const JobListingStrip = {
+	data(){
+		return{
+			s_apply: Strings.Apply
+		}
+	},
 	props: {
 		title: String,
 		classification: String,

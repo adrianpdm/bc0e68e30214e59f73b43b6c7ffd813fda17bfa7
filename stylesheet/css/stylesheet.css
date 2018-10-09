@@ -6,10 +6,6 @@
   padding: 0;
 }
 
-.navbar {
-  padding: 0;
-}
-
 .container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -78,13 +74,18 @@ body {
 #header .navbar {
   height: 96px;
   padding: 24px;
-  font-size: 1.2em;
+}
+#header .navbar-brand > img {
+  width: 128px;
 }
 #header #navbar-header {
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
   justify-content: flex-end;
 }
 #header #navbar-header .navbar-nav > .nav-item > .nav-link {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 #header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
   color: white;
@@ -94,9 +95,6 @@ body {
 }
 #header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
   color: white;
-}
-#header .kulina-brand img {
-  width: 128px;
 }
 #header .greetings {
   -webkit-box-sizing: border-box;
@@ -113,6 +111,7 @@ body {
   color: white;
   font-size: 2.5em;
   font-weight: 700;
+  letter-spacing: 0.05rem;
 }
 
 #content {
@@ -140,7 +139,7 @@ body {
 .headline-grid-container span.description {
   font-size: 1.3em;
   font-weight: 400;
-  color: #6a6a6a;
+  color: #8a8a8a;
 }
 
 .job-listing-strip {
@@ -222,7 +221,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #6a6a6a;
+  color: #8a8a8a;
   font-size: 1.1em;
 }
 #footer::after {
@@ -253,8 +252,18 @@ body {
   display: none;
 }
 #footer img.social-media-icon {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
   width: 2em;
   height: 2em;
+  opacity: 0.7;
+  margin-right: 4px;
+}
+#footer img.social-media-icon:hover {
+  opacity: 1;
 }
 
 @media (min-width: 768px) {

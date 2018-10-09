@@ -11,7 +11,7 @@ $font-size-large: 1.8em;
 $font-size-huge: 2.5em;
 
 $font-color-normal: #0a0a0a;
-$font-color-light: #6a6a6a;
+$font-color-light: #8a8a8a;
 $font-color-lighter: #bababa;
 
 @mixin scale($scaleX, $scaleY){
@@ -70,16 +70,12 @@ $font-color-lighter: #bababa;
   }
 }
 
-//Bootstrap Override
+// Bootstrap Override -----------------------------------
 [class^="row"], [class*=" row"] {
   margin: 0;
 }
 
 [class^="col-"], [class*=" col-"] {
-  padding: 0;
-}
-
-.navbar {
   padding: 0;
 }
 
@@ -108,6 +104,7 @@ $font-color-lighter: #bababa;
   @include shadow(0 2px 12px 0 transparentize(orange, 0.5));
 }
 
+// Style ------------------------------------------------------
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 75%;
@@ -115,6 +112,7 @@ body {
   min-width: 320px;
 }
 
+// [#HEADER STYLE----------------------]
 #header {
   @include sizing(border-box);
   position: relative;
@@ -142,14 +140,20 @@ body {
   .navbar {
     height: $navbar-height;
     padding: 24px;
-    font-size: $font-size-small;
+  }
+
+  .navbar-brand > img{
+    width: 128px;
   }
 
   #navbar-header{
+    font-size: $font-size-small;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
     justify-content: flex-end;
 
     .navbar-nav > .nav-item > .nav-link {
-      color: transparentize(#fff, 0.4);
+      color: transparentize(#fff, 0.3);
 
       &:hover{
         color: white;
@@ -162,13 +166,6 @@ body {
       &:hover{
         color: white;
       }
-    }
-
-  }
-
-  .kulina-brand{
-    img{
-      width: 128px;
     }
   }
 
@@ -184,10 +181,12 @@ body {
       color: white;
       font-size: $font-size-huge;
       font-weight: 700;
+      letter-spacing: 0.05rem;
     }
   }
 }
 
+// [#CONTENT STYLE----------------------]
 #content {
   @include sizing(box-sizing);
   position: relative;
@@ -255,6 +254,7 @@ body {
   }
 }
 
+// [#FOOTER STYLE----------------------]
 #footer {
   @include sizing(border-box);
   position: relative;
@@ -297,11 +297,21 @@ body {
   }
 
   img.social-media-icon {
+    @include transition(opacity 0.2s ease-in-out);
     width: 2em;
     height: 2em;
+    opacity: .7;
+    margin-right: 4px;
+
+    &:hover{
+      opacity: 1;
+    }
   }
 }
 
+// MEDIA QUERIES --------------------------------------------
+
+// [FOR DESKTOP AND TABLET >= 768 PX]
 @media (min-width: 768px) {
   #header {
 

@@ -15,7 +15,7 @@ const NavigationBar = {
 		`<div class="navbar-container">`+
 			`<div class="navbar-background"></div>`+
 			`<nav class="navbar navbar-light navbar-expand-md fixed-top">`+
-				`<a class="navbar-brand kulina-brand" href="#"><img :src="brandIcon"></a>`+
+				`<a class="navbar-brand" href="#"><img :src="brandIcon"></a>`+
 				`<button class="navbar-toggler" type="button" data-toggle="collapse" href="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Open Drawer">`+
 					`<span class="navbar-toggler-icon"></span>`+
 				`</button>`+
