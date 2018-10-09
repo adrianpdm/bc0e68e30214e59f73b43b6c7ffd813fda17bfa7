@@ -1,3 +1,6 @@
+$header-height: 60vh;
+$navbar-height: 96px;
+
 $shadow-color: rgba(176, 187, 195, 0.31);
 
 $font-size-smaller: 1.1em;
@@ -104,10 +107,11 @@ body {
 #header {
   @include sizing(border-box);
   position: relative;
-  height: 80vh;
-  background-color: #4e555b;
+  height: $header-height;
+  background: url("../../static/shridhar-gupta-678685-unsplash.jpg") top;
 
   .navbar {
+    height: 96px;
     padding: 24px;
     font-size: $font-size-small;
   }
@@ -115,16 +119,20 @@ body {
   #navbar-header{
     justify-content: flex-end;
 
-    .navbar-nav > .nav-item + .nav-item {
-      margin-left: 16px;
-    }
-
     .navbar-nav > .nav-item > .nav-link {
-      color: transparentize(#fff, 0.6);
+      color: transparentize(#fff, 0.4);
+
+      &:hover{
+        color: white;
+      }
     }
 
     .navbar-nav > .nav-item.active > .nav-link {
-      color: transparentize(#fff, 0.2);
+      color: transparentize(#fff, 0.1);
+
+      &:hover{
+        color: white;
+      }
     }
 
   }
@@ -136,7 +144,9 @@ body {
   }
 
   .greetings {
-    height: 100%;
+    @include sizing(border-box);
+    position: relative;
+    top: calc((#{$header-height} - #{$navbar-height}) / 2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -263,6 +273,14 @@ body {
 }
 
 @media (min-width: 768px) {
+  #header {
+
+    .navbar-nav > .nav-item + .nav-item {
+      margin-left: 16px;
+    }
+
+  }
+
   #footer {
     padding-left: 10vw;
     padding-right: 10vw;
