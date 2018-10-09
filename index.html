@@ -11,15 +11,27 @@
 <body>
 <div id="main" class="container">
     <div id="content">
-    <headline-grid headline-title="What We Do">
-
-    </headline-grid>
-    <headline-grid headline-title="Explore Opportunities">
-
-    </headline-grid>
+        <headline-grid headline-title="What We Do">
+            <template slot="content">
+                <span v-html="wwd_strings"></span>
+            </template>
+        </headline-grid>
+        <headline-grid headline-title="Explore Opportunities">
+            <template slot="content">
+                <job-listing-strip
+                        v-for="(item, i) in availableJobs"
+                        :key="`job-${i}`"
+                        :title="item.title"
+                        :classification="item.classification"
+                        :contract="item.contract"
+                        :location="item.location">
+                </job-listing-strip>
+            </template>
+        </headline-grid>
     </div>
 </div>
 
+<script src="AvailableJobs.js"></script>
 <script>
 	const HeadlineGrid = {
 		props: {
@@ -34,40 +46,49 @@
         //@formatter:on
 	}
 
+	console.log(availableJobs)
+
 	const JobListingStrip = {
-		props: ['jobTitle', 'jobClass', 'contract', 'location'],
-        template:
-        //@formatter:off
+		props: {
+			title: String,
+			classification: String,
+			contract: String,
+			location: String
+		},
+		template:
+		//@formatter:off
             `<div class="row job-listing-strip">` +
                 `<div class="col-md-8">`+
-                `<span class="job-title">{{jobTitle}}</span>`+
-                `<span class="job-details">{{jobClass}} + " \u2022 " + {{contract}} + " \u2022 " + {{location}}</span>`
+                `<span class="job-title">{{title}}</span>`+
+                `<span class="job-details">{{classification + " \u2022 " + contract + " \u2022 " + location}}</span>`+
                 `</div>`+
                 `<div class="col-md-4"></div>`+
             `</div>`
 		//@formatter:on
-    }
+	}
 
 	const wwd_strings =
-        `Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". `+
-        `We want to be customer's default meal option by providing quality product with on-time delivery. ` +
-        `We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
-        `<br><br>` +
-        `We took pride in being the first food tech startup to join "Google Launchpad Accelerator" in San Francisco, and the only on from Indonesia in winter 2018. ` +
-        `Our startup is backed by the same investor who invested in Ele.me (China's unicorn food delivery startup). ` +
-        `<br><br>` +
-        `Join us in our mission to delivering the best meals to ten millions of Jakartans. ` +
-        `Hurry! Be part of our Kulinas family.`
+		`Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". ` +
+		`We want to be customer's default meal option by providing quality product with on-time delivery. ` +
+		`We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
+		`<br><br>` +
+		`We took pride in being the first food tech startup to join "Google Launchpad Accelerator" in San Francisco, and the only on from Indonesia in winter 2018. ` +
+		`Our startup is backed by the same investor who invested in Ele.me (China's unicorn food delivery startup). ` +
+		`<br><br>` +
+		`Join us in our mission to delivering the best meals to ten millions of Jakartans. ` +
+		`Hurry! Be part of our Kulinas family.`
 
 	new Vue({
 		el: "#main",
-        data: function(){
+		data: function() {
 			return {
-			    wwd_strings
-            }
-        },
+				wwd_strings,
+				availableJobs
+			}
+		},
 		components: {
-			"headline-grid": HeadlineGrid
+			"headline-grid": HeadlineGrid,
+			"job-listing-strip": JobListingStrip
 		}
 	})
 </script>
