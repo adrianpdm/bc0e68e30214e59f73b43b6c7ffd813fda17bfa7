@@ -10,26 +10,28 @@
 </head>
 <body>
 <div id="main" class="container">
-    <div id="content">
+    <section id="header">
+        <nav-bar></nav-bar>
+        <div class="greetings">
+            <span>Join an Impactful Company</span>
+        </div>
+    </section>
+    <section id="content">
         <headline-grid headline-title="What We Do" style="background-color: white">
-            <template>
-                <span class="description" v-html="wwd_strings"></span>
-            </template>
+            <span class="description" v-html="wwd_strings"></span>
         </headline-grid>
         <headline-grid headline-title="Explore Opportunities" style="background-color: #fcfcfc">
-            <template>
-                <job-listing-strip
-                        v-for="(item, i) in availableJobs"
-                        :key="`job-${i}`"
-                        :title="item.title"
-                        :classification="item.classification"
-                        :contract="item.contract"
-                        :location="item.location">
-                </job-listing-strip>
-            </template>
+            <job-listing-strip
+                    v-for="(item, i) in availableJobs"
+                    :key="`job-${i}`"
+                    :title="item.title"
+                    :classification="item.classification"
+                    :contract="item.contract"
+                    :location="item.location">
+            </job-listing-strip>
         </headline-grid>
-    </div>
-    <div id="footer">
+    </section>
+    <section id="footer">
         <div class="copyright-notes">
             <span>Made with <img class="heart-image" src="static/heart.png">  from Indonesia. &nbsp;</span>
             <span>&#xa9 Kulina, 2018. All Rights Reserved.</span>
@@ -44,14 +46,15 @@
                     :icon="item.img">
             </social-media-button>
         </div>
-    </div>
+    </section>
 </div>
 
-<script src="component/HeadlineGrid.js"></script>
-<script src="component/JobListingStrip.js"></script>
-<script src="component/JobApplyButton.js"></script>
-<script src="component/SocialMediaButton.js"></script>
-<script src="AvailableJobs.js"></script>
+<script src="./component/NavBar.js"></script>
+<script src="./component/HeadlineGrid.js"></script>
+<script src="./component/JobListingStrip.js"></script>
+<script src="./component/JobApplyButton.js"></script>
+<script src="./component/SocialMediaButton.js"></script>
+<script src="./AvailableJobs.js"></script>
 <script>
 		const wwd_strings =
 		`Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". ` +
@@ -68,12 +71,14 @@
 		el: "#main",
 		data: function() {
 			return {
+				menuList: NavigationMenuList,
 				wwd_strings,
 				availableJobs,
                 socialMediaList: SocialMediaList
 			}
 		},
 		components: {
+			"nav-bar": NavigationBar,
 			"headline-grid": HeadlineGrid,
 			"job-listing-strip": JobListingStrip,
             "social-media-button": SocialMediaButton
