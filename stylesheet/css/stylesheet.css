@@ -40,30 +40,38 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  height: 80vh;
-  background-color: #4e555b;
+  height: 60vh;
+  background: url("../../static/shridhar-gupta-678685-unsplash.jpg") top;
 }
 #header .navbar {
+  height: 96px;
   padding: 24px;
   font-size: 1.2em;
 }
 #header #navbar-header {
   justify-content: flex-end;
 }
-#header #navbar-header .navbar-nav > .nav-item + .nav-item {
-  margin-left: 16px;
-}
 #header #navbar-header .navbar-nav > .nav-item > .nav-link {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
+}
+#header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
+  color: white;
 }
 #header #navbar-header .navbar-nav > .nav-item.active > .nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+}
+#header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
+  color: white;
 }
 #header .kulina-brand img {
   width: 128px;
 }
 #header .greetings {
-  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  top: calc((60vh - 96px) / 2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,6 +225,10 @@ body {
 }
 
 @media (min-width: 768px) {
+  #header .navbar-nav > .nav-item + .nav-item {
+    margin-left: 16px;
+  }
+
   #footer {
     padding-left: 10vw;
     padding-right: 10vw;

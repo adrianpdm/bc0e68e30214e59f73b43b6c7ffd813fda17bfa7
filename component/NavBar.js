@@ -12,9 +12,9 @@ const NavigationBar = {
 		}
 	},
 	template:
-		`<nav class="navbar navbar-dark fixed-top navbar-expand-md">`+
-            `<a class="kulina-brand" href="#"><img :src="brandIcon"></a>`+
-            `<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">`+
+		`<nav class="navbar navbar-light navbar-expand-md fixed-top">`+
+            `<a class="navbar-brand kulina-brand" href="#"><img :src="brandIcon"></a>`+
+            `<button class="navbar-toggler" type="button" data-toggle="collapse" href="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Open Drawer">`+
                 `<span class="navbar-toggler-icon"></span>`+
             `</button>`+
 			`<div class="collapse navbar-collapse" id="navbar-header">`+
