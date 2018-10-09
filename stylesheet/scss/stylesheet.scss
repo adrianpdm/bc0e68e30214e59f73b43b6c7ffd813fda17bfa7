@@ -1,3 +1,14 @@
+$font-size-smaller: 1em;
+$font-size-small: 1.2em;
+$font-size-normal: 1.3em;
+$font-size-medium: 1.5em;
+$font-size-large: 1.8em;
+$font-size-huge: 2.4em;
+
+$font-color-normal: #0a0a0a;
+$font-color-light: #6a6a6a;
+$font-color-lighter: #bababa;
+
 @mixin scale($scaleX, $scaleY){
   -webkit-transform: scale($scaleX, $scaleY);
   -moz-transform: scale($scaleX, $scaleY);
@@ -32,10 +43,6 @@
   @include transition(all 0.3s ease-in-out);
   @include shadow(0 4px 36px 0 rgba(0, 0, 0, 0.1));
 
-  &:hover{
-    @include scale(1.01, 1.05);
-  }
-
   &::before {
     border-radius: 4px;
     content: '';
@@ -56,6 +63,32 @@
   }
 }
 
+//Bootstrap Override
+[class^="row"], [class*=" row"] {
+  margin: 0;
+}
+
+[class^="col-"], [class*=" col-"] {
+  padding: 0;
+}
+
+.container {
+  @include sizing(border-box);
+  width: 100%;
+  max-width: 1440px;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  color: white;
+  font-size: $font-size-smaller;
+  padding: 6px 48px;
+  border: none;
+  background-color: darkorange;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
@@ -63,60 +96,85 @@ body {
   min-width: 320px;
 }
 
-@media (min-width: 992px) and (min-width: 1200px) {
-  .container {
-    width: 100%;
-    max-width: 1440px;
-    background-color: white;
-    margin: 0 auto;
+#content {
+  @include sizing(box-sizing);
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.headline-grid-container {
+  padding: 24px;
+
+  .headline-title{
+    margin-bottom: 24px;
+    > span{
+      display: block;
+      font-size: $font-size-huge;
+      font-weight: 900;
+      color: $font-color-normal;
+      line-height: 1.2em;
+    }
   }
 
-  #content {
-    width: 75%;
-    margin: 0 auto;
+  span.description{
+    font-size: $font-size-normal;
+    font-weight: 400;
+    color: $font-color-light;
   }
+}
+
+.job-listing-strip {
+  @include elevate-on-hover();
+  @include sizing(border-box);
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px;
+
+  + .job-listing-strip {
+    margin-top: 24px;
+  }
+
+  &:last-child{
+    margin-bottom: 24px;
+  }
+
+  .job-title {
+    display: block;
+    font-size: $font-size-medium;
+    font-weight: 700;
+    line-height: 1.5em;
+    color: $font-color-normal;
+  }
+
+  .job-details {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: $font-size-small;
+    color: $font-color-light;
+    margin-bottom: 8px;
+  }
+
+  .btn-container {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 768px) {
   .headline-grid-container {
-
+    padding: 72px 10vw;
   }
 
   .job-listing-strip {
-    @include elevate-on-hover();
-    @include sizing(border-box);
-    position: relative;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 20px;
-
-    [class^="col-"], [class*=" col-"] {
-      padding: 0;
+    .btn-container {
+      justify-content: flex-end;
     }
+  }
 
-    + .job-listing-strip {
-      margin-top: 24px;
-    }
-
-    &:last-child{
-      margin-bottom: 24px;
-    }
-
-    .job-title {
-      display: block;
-      font-size: 1.5em;
-      font-weight: 700;
-      line-height: 1.5em;
-      color: #0a0a0a;
-    }
-
-    .job-details {
-      display: block;
-      font-size: 1.2em;
-      font-weight: 400;
-      line-height: 1.2em;
-      color: #6a6a6a;
-    }
-
-    .apply-button {
-
-    }
+  .btn {
+    padding: 12px 48px;
   }
 }
