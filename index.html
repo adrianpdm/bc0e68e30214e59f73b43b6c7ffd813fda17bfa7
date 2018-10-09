@@ -9,8 +9,12 @@
     <link href="stylesheet/css/stylesheet.css" rel="stylesheet">
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 <script src="./js/bootstrap.min.js"></script>
 <div id="main" class="container">
     <section id="header">
@@ -59,7 +63,7 @@
 <script src="./component/SocialMediaButton.js"></script>
 <script src="./AvailableJobs.js"></script>
 <script>
-		const wwd_strings =
+	const wwd_strings =
 		`Kulina's mission is to "serve the best meal with an outstanding customer experience at the lowest possible price every single day". ` +
 		`We want to be customer's default meal option by providing quality product with on-time delivery. ` +
 		`We help customers save time and money for each meal they get from us, so they can better spend it on other things that matter. ` +
@@ -70,6 +74,16 @@
 		`Join us in our mission to delivering the best meals to ten millions of Jakartans. ` +
 		`Hurry! Be part of our Kulinas family.`
 
+    $(window).on("scroll", function(){
+		let headerHeight = $("#header").height();
+		let scrollPosition = $(window).scrollTop();
+		let diff = 1 - ((headerHeight - scrollPosition) / headerHeight)
+		let opacity = Math.min(.75, diff)
+		console.log(opacity)
+		$(".navbar-background").css({"opacity": opacity})
+        $(".greetings").css({"opacity": 1 - opacity})
+    })
+
 	new Vue({
 		el: "#main",
 		data: function() {
@@ -77,14 +91,14 @@
 				menuList: NavigationMenuList,
 				wwd_strings,
 				availableJobs,
-                socialMediaList: SocialMediaList
+				socialMediaList: SocialMediaList
 			}
 		},
 		components: {
 			"nav-bar": NavigationBar,
 			"headline-grid": HeadlineGrid,
 			"job-listing-strip": JobListingStrip,
-            "social-media-button": SocialMediaButton
+			"social-media-button": SocialMediaButton
 		}
 	})
 </script>
