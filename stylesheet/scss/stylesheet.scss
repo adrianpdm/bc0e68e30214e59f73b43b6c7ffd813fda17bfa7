@@ -1,3 +1,61 @@
+@mixin scale($scaleX, $scaleY){
+  -webkit-transform: scale($scaleX, $scaleY);
+  -moz-transform: scale($scaleX, $scaleY);
+  -ms-transform: scale($scaleX, $scaleY);
+  -o-transform: scale($scaleX, $scaleY);
+  transform: scale($scaleX, $scaleY);
+}
+
+@mixin transition($opts...) {
+  -webkit-transition: $opts;
+  -moz-transition: $opts;
+  -ms-transition: $opts;
+  -o-transition: $opts;
+  transition: $opts;
+}
+
+@mixin sizing($opts...) {
+  -webkit-box-sizing: $opts;
+  -moz-box-sizing: $opts;
+  box-sizing: $opts;
+}
+
+@mixin shadow($opts...) {
+  -webkit-box-shadow: $opts;
+  -moz-box-shadow: $opts;
+  box-shadow: $opts;
+}
+
+@mixin elevate-on-hover() {
+  border-radius: 4px;
+  background-color: white;
+  @include transition(all 0.3s ease-in-out);
+  @include shadow(0 4px 36px 0 rgba(0, 0, 0, 0.1));
+
+  &:hover{
+    @include scale(1.01, 1.05);
+  }
+
+  &::before {
+    border-radius: 4px;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    @include transition(opacity 0.3s ease-in-out);
+    @include shadow(0 8px 52px 0 rgba(0, 0, 0, 0.1));
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
@@ -5,30 +63,60 @@ body {
   min-width: 320px;
 }
 
-@media (min-width: 992px) and (min-width: 1200px){
+@media (min-width: 992px) and (min-width: 1200px) {
   .container {
     width: 100%;
     max-width: 1440px;
-    background-color: red;
+    background-color: white;
     margin: 0 auto;
   }
 
   #content {
-    width: 66%;
+    width: 75%;
     margin: 0 auto;
   }
-  .headline-grid-container{
+  .headline-grid-container {
 
   }
 
-  .job-listing-strip{
+  .job-listing-strip {
+    @include elevate-on-hover();
+    @include sizing(border-box);
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+
+    [class^="col-"], [class*=" col-"] {
+      padding: 0;
+    }
+
+    + .job-listing-strip {
+      margin-top: 24px;
+    }
+
+    &:last-child{
+      margin-bottom: 24px;
+    }
 
     .job-title {
       display: block;
+      font-size: 1.5em;
+      font-weight: 700;
+      line-height: 1.5em;
+      color: #0a0a0a;
     }
 
     .job-details {
       display: block;
+      font-size: 1.2em;
+      font-weight: 400;
+      line-height: 1.2em;
+      color: #6a6a6a;
+    }
+
+    .apply-button {
+
     }
   }
 }
