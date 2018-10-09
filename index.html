@@ -12,12 +12,12 @@
 <div id="main" class="container">
     <div id="content">
         <headline-grid headline-title="What We Do" style="background-color: white">
-            <template slot="content">
+            <template>
                 <span class="description" v-html="wwd_strings"></span>
             </template>
         </headline-grid>
         <headline-grid headline-title="Explore Opportunities" style="background-color: #fcfcfc">
-            <template slot="content">
+            <template>
                 <job-listing-strip
                         v-for="(item, i) in availableJobs"
                         :key="`job-${i}`"
@@ -30,11 +30,11 @@
         </headline-grid>
     </div>
     <div id="footer">
-        <div id="copyright-notes">
+        <div class="copyright-notes">
             <span>Made with <img class="heart-image" src="static/heart.png">  from Indonesia. &nbsp;</span>
             <span>&#xa9 Kulina, 2018. All Rights Reserved.</span>
         </div>
-        <div id="social-buttons">
+        <div class="social-icons-container">
             <span>Follow kami &nbsp;</span>
             <social-media-button
                     v-for="(item, i) in socialMediaList"
