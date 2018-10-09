@@ -1,4 +1,4 @@
-$header-height: 60vh;
+$header-height: 75vh;
 $navbar-height: 96px;
 
 $shadow-color: rgba(176, 187, 195, 0.31);
@@ -42,11 +42,13 @@ $font-color-lighter: #bababa;
   box-shadow: $opts;
 }
 
-@mixin elevate-on-hover() {
+@mixin elevate-on-hover($depth, $color) {
+  $blur: calc(#{$depth} * 8px);
+  $blur-hover: calc(#{$depth} * 12px);
   border-radius: 4px;
   background-color: white;
-  @include transition(all 0.3s ease-in-out);
-  @include shadow(0 4px 32px -2px $shadow-color);
+  @include transition(opacity 0.3s ease-in-out);
+  @include shadow(0 4px $blur -2px $color);
 
   &::before {
     border-radius: 4px;
@@ -59,7 +61,7 @@ $font-color-lighter: #bababa;
     right: 0;
     background-color: white;
     @include transition(opacity 0.3s ease-in-out);
-    @include shadow(0 8px 52px -2px $shadow-color);
+    @include shadow(0 8px $blur-hover -2px $color);
     opacity: 0;
   }
 
@@ -95,6 +97,15 @@ $font-color-lighter: #bababa;
   font-size: $font-size-smaller;
   padding: 6px 48px;
   background-color: darkorange;
+  @include transition(background-color 0.3s ease-in-out);
+
+  &:hover{
+    background-color: orangered;
+  }
+}
+
+.btn, .btn:focus, .btn.focus {
+  @include shadow(0 2px 12px 0 transparentize(orange, 0.5));
 }
 
 body {
@@ -110,8 +121,26 @@ body {
   height: $header-height;
   background: url("../../static/shridhar-gupta-678685-unsplash.jpg") top;
 
+  .navbar-container{
+    @include sizing(border-box);
+    position: relative;
+  }
+
+  .navbar-background{
+    content: '';
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $navbar-height;
+    background-color: #8b061a;
+    z-index: 100;
+    opacity: 0;
+  }
+
   .navbar {
-    height: 96px;
+    height: $navbar-height;
     padding: 24px;
     font-size: $font-size-small;
   }
@@ -146,7 +175,7 @@ body {
   .greetings {
     @include sizing(border-box);
     position: relative;
-    top: calc((#{$header-height} - #{$navbar-height}) / 2);
+    top: calc((#{$header-height} - #{$navbar-height})  / 2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,7 +217,7 @@ body {
 }
 
 .job-listing-strip {
-  @include elevate-on-hover();
+  @include elevate-on-hover(4, $shadow-color);
   @include sizing(border-box);
   position: relative;
   margin-left: 0;
@@ -209,14 +238,15 @@ body {
     font-weight: 700;
     line-height: 1.5em;
     color: $font-color-normal;
+    margin-bottom: 4px;
   }
 
   .job-details {
     display: block;
     font-size: 1.2em;
-    font-weight: 400;
+    font-weight: 500;
     line-height: $font-size-small;
-    color: $font-color-light;
+    color: $font-color-lighter;
     margin-bottom: 8px;
   }
 

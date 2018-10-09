@@ -26,6 +26,20 @@
   font-size: 1.1em;
   padding: 6px 48px;
   background-color: darkorange;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: orangered;
+}
+
+.btn, .btn:focus, .btn.focus {
+  -webkit-box-shadow: 0 2px 12px 0 rgba(255, 165, 0, 0.5);
+  -moz-box-shadow: 0 2px 12px 0 rgba(255, 165, 0, 0.5);
+  box-shadow: 0 2px 12px 0 rgba(255, 165, 0, 0.5);
 }
 
 body {
@@ -40,8 +54,26 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  height: 60vh;
+  height: 75vh;
   background: url("../../static/shridhar-gupta-678685-unsplash.jpg") top;
+}
+#header .navbar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+#header .navbar-background {
+  content: "";
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  background-color: #8b061a;
+  z-index: 100;
+  opacity: 0;
 }
 #header .navbar {
   height: 96px;
@@ -71,7 +103,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  top: calc((60vh - 96px) / 2);
+  top: calc((75vh - 96px) / 2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,14 +146,14 @@ body {
 .job-listing-strip {
   border-radius: 4px;
   background-color: white;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -webkit-box-shadow: 0 4px 32px -2px rgba(176, 187, 195, 0.31);
-  -moz-box-shadow: 0 4px 32px -2px rgba(176, 187, 195, 0.31);
-  box-shadow: 0 4px 32px -2px rgba(176, 187, 195, 0.31);
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-box-shadow: 0 4px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
+  -moz-box-shadow: 0 4px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
+  box-shadow: 0 4px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -145,9 +177,9 @@ body {
   -ms-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
-  -webkit-box-shadow: 0 8px 52px -2px rgba(176, 187, 195, 0.31);
-  -moz-box-shadow: 0 8px 52px -2px rgba(176, 187, 195, 0.31);
-  box-shadow: 0 8px 52px -2px rgba(176, 187, 195, 0.31);
+  -webkit-box-shadow: 0 8px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
+  -moz-box-shadow: 0 8px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
+  box-shadow: 0 8px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
   opacity: 0;
 }
 .job-listing-strip:hover::before {
@@ -165,13 +197,14 @@ body {
   font-weight: 700;
   line-height: 1.5em;
   color: #0a0a0a;
+  margin-bottom: 4px;
 }
 .job-listing-strip .job-details {
   display: block;
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2em;
-  color: #6a6a6a;
+  color: #bababa;
   margin-bottom: 8px;
 }
 .job-listing-strip .btn-container {
