@@ -9,8 +9,9 @@
     <link href="stylesheet/css/stylesheet.css" rel="stylesheet">
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -21,6 +22,9 @@
         <nav-bar></nav-bar>
         <div class="greetings">
             <span>{{s_joinImpact}}</span>
+        </div>
+        <div id="scroll-to-button">
+            <span class="icon"></span>
         </div>
     </section>
     <section id="content">
@@ -64,14 +68,27 @@
 <script src="./js/AvailableJobs.js"></script>
 <script src="./js/Strings.js"></script>
 <script>
+	$(document).ready(function(){
+		$('#scroll-to-button').click(function(){
+			let targetHeight = $('#content').offset().top
+			let navbarHeight = $("#navbar-container").height()
+            console.log(targetHeight, navbarHeight)
+			$('html, body').animate({
+				scrollTop: targetHeight  - navbarHeight
+			}, 1000)
+		})
+    })
+
 	$(window).on("scroll", function() {
 		let headerHeight = $("#header").height()
+		let navbarHeight = $("#navbar-container").height()
 		let scrollPosition = $(window).scrollTop()
-		let diff = 1 - ((headerHeight - scrollPosition) / headerHeight)
-		let opacity = Math.min(.75, diff)
+		let diff = 1 - ((headerHeight - navbarHeight - scrollPosition) / (headerHeight - navbarHeight))
+		let opacity = Math.min(1, diff)
 		console.log(opacity)
-		$(".navbar-background").css({"opacity": opacity})
-		$(".greetings").css({"opacity": 1 - opacity})
+		$(".navbar-background").css({opacity: Math.min(.8, opacity)})
+        $("#scroll-to-button").css({opacity: 1 - opacity})
+		$(".greetings").css({opacity: 1 - opacity})
 	})
 
 	new Vue({

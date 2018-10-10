@@ -12,7 +12,7 @@ const NavigationBar = {
 		}
 	},
 	template:
-		`<div class="navbar-container">`+
+		`<div id="navbar-container">`+
 			`<div class="navbar-background"></div>`+
 			`<nav class="navbar navbar-light navbar-expand-md fixed-top">`+
 				`<a class="navbar-brand" href="#"><img :src="brandIcon"></a>`+
