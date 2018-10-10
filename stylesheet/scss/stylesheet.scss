@@ -123,6 +123,7 @@ $font-color-lighter: #bababa;
   background-color: white;
   padding: 0;
   margin: 0;
+  @include shadow(0 0 54px 0 $shadow-color);
 }
 
 .btn {
@@ -147,6 +148,11 @@ body {
   font-size: 75%;
   margin: 0;
   min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ghostwhite;
 }
 
 // [#HEADER STYLE----------------------]
@@ -162,12 +168,14 @@ body {
   }
 
   .navbar-background{
+    @include sizing(border-box);
     content: '';
     position: fixed;
     display: block;
     top: 0;
     left: 0;
     right: 0;
+    max-width: 1440px;
     height: $navbar-height;
     background-color: #8b061a;
     z-index: 100;
@@ -175,6 +183,8 @@ body {
   }
 
   .navbar {
+    @include sizing(border-box);
+    max-width: 1440px;
     height: $navbar-height;
     padding: 24px;
 
@@ -195,7 +205,7 @@ body {
   #navbar-header{
     position: absolute;
     top: $navbar-height;
-    width: 100vw;
+    width: 100%;
     margin-left: -24px;
     margin-right: -24px;
     font-size: $font-size-large;
@@ -389,12 +399,35 @@ body {
 }
 
 // MEDIA QUERIES --------------------------------------------
+@media (min-width: 768px) and (min-width: 992px) and (min-width: 1200px) {
+  .container {
+    @include sizing(border-box);
+    width: 100%;
+    max-width: 1440px;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  #navbar-container {
+    .navbar, .navbar-background {
+      left: calc((100vw - 1440px) / 2);
+    }
+  }
+}
 
 // [FOR DESKTOP AND TABLET >= 768 PX]
 @media (min-width: 768px) {
   #header {
 
     #navbar-header{
+      position: relative;
+      top: 0;
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
       font-size: $font-size-small;
       font-weight: 400;
       letter-spacing: 0.05em;
