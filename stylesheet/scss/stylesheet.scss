@@ -42,16 +42,16 @@ $font-color-lighter: #bababa;
   box-shadow: $opts;
 }
 
-@mixin elevate-on-hover($depth, $color) {
-  $blur: calc(#{$depth} * 8px);
-  $blur-hover: calc(#{$depth} * 12px);
-  border-radius: 4px;
-  background-color: white;
-  @include transition(opacity 0.3s ease-in-out);
-  @include shadow(0 4px $blur -2px $color);
+@mixin elevate-on-hover($shadowDepth, $shadowColor, $backgroundColor, $borderRadius) {
+  $shadow-blur: calc(#{$shadowDepth} * 8px);
+  $shadow-blur-hover: calc(#{$shadowDepth} * 12px);
+  border-radius: $borderRadius;
+  background-color: $backgroundColor;
+  @include transition(all 0.3s ease-in-out);
+  @include shadow(0 1px $shadow-blur -2px $shadowColor);
 
   &::before {
-    border-radius: 4px;
+    border-radius: $borderRadius;
     content: '';
     display: block;
     position: absolute;
@@ -59,15 +59,52 @@ $font-color-lighter: #bababa;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: $backgroundColor;
     @include transition(opacity 0.3s ease-in-out);
-    @include shadow(0 8px $blur-hover -2px $color);
+    @include shadow(0 2px $shadow-blur-hover -2px $shadowColor);
     opacity: 0;
   }
 
   &:hover::before {
     opacity: 1;
   }
+}
+
+@mixin anim-bounce($translateY){
+  @-webkit-keyframes bounce {
+    0%{
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);}
+    100%{
+      -webkit-transform: translateY($translateY);
+      -moz-transform: translateY($translateY);
+      -ms-transform: translateY($translateY);
+      -o-transform: translateY($translateY);
+      transform: translateY($translateY);}
+  }
+
+  @keyframes bounce {
+    0%{
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);}
+    100%{
+      -webkit-transform: translateY($translateY);
+      -moz-transform: translateY($translateY);
+      -ms-transform: translateY($translateY);
+      -o-transform: translateY($translateY);
+      transform: translateY($translateY);}
+  }
+
+  -webkit-animation: bounce .3s ease-in alternate-reverse infinite;
+  -o-animation: bounce .3s ease-in alternate-reverse infinite;
+  animation: bounce .3s ease-in alternate-reverse infinite;
+
 }
 
 // Bootstrap Override -----------------------------------
@@ -119,9 +156,9 @@ body {
   height: $header-height;
   background: url("../../static/shridhar-gupta-678685-unsplash.jpg") top;
 
-  .navbar-container{
+  #navbar-container{
     @include sizing(border-box);
-    position: relative;
+    height: $navbar-height;
   }
 
   .navbar-background{
@@ -149,7 +186,7 @@ body {
   #navbar-header{
     font-size: $font-size-small;
     font-weight: 400;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.05em;
     justify-content: flex-end;
 
     .navbar-nav > .nav-item > .nav-link {
@@ -171,8 +208,10 @@ body {
 
   .greetings {
     @include sizing(border-box);
-    position: relative;
-    top: calc((#{$header-height} - #{$navbar-height})  / 2);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -181,7 +220,30 @@ body {
       color: white;
       font-size: $font-size-huge;
       font-weight: 700;
-      letter-spacing: 0.05rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+  }
+
+  $scroll-to-button-width: 42px;
+  #scroll-to-button{
+    @include elevate-on-hover(8, transparentize(#fff, 0.1), white, 3rem);
+    @include sizing(border-box);
+    @include anim-bounce(3px);
+    position: absolute;
+    left: calc((100% - #{$scroll-to-button-width}) / 2);
+    bottom: 1.5rem;
+    width: $scroll-to-button-width;
+    height: $scroll-to-button-width;
+    border-radius: 3rem;
+    cursor: pointer;
+
+    > span.icon{
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url("../../static/icons8-expand-arrow-20.png") center no-repeat;
     }
   }
 }
@@ -216,7 +278,7 @@ body {
 }
 
 .job-listing-strip {
-  @include elevate-on-hover(4, $shadow-color);
+  @include elevate-on-hover(4, $shadow-color, white, 4px);
   @include sizing(border-box);
   position: relative;
   margin-left: 0;
