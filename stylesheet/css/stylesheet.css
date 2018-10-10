@@ -75,16 +75,31 @@ body {
   height: 96px;
   padding: 24px;
 }
-#header .navbar-brand > img {
+#header .navbar .navbar-brand > img {
   width: 128px;
 }
+#header .navbar .navbar-toggler {
+  border: none !important;
+}
+#header .navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: url("../../static/icons8-menu-48.png") !important;
+  background-size: 75% 75%;
+}
 #header #navbar-header {
-  font-size: 1.2em;
-  font-weight: 400;
+  position: absolute;
+  top: 96px;
+  width: 100vw;
+  margin-left: -24px;
+  margin-right: -24px;
+  font-size: 1.8em;
+  font-weight: 300;
   letter-spacing: 0.05em;
   justify-content: flex-end;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 #header #navbar-header .navbar-nav > .nav-item > .nav-link {
+  width: 100%;
+  text-align: center;
   color: rgba(255, 255, 255, 0.7);
 }
 #header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
@@ -357,6 +372,25 @@ body {
 }
 
 @media (min-width: 768px) {
+  #header #navbar-header {
+    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    justify-content: flex-end;
+    background-color: transparent;
+  }
+  #header #navbar-header .navbar-nav > .nav-item > .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  #header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
+    color: white;
+  }
+  #header #navbar-header .navbar-nav > .nav-item.active > .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  #header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
+    color: white;
+  }
   #header .navbar-nav > .nav-item + .nav-item {
     margin-left: 16px;
   }
