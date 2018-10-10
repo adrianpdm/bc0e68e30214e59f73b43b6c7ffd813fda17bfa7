@@ -77,6 +77,17 @@
 				scrollTop: targetHeight  - navbarHeight
 			}, 1000)
 		})
+
+		$('.navbar-toggler').click(function(){
+			let isExpanded = $('.navbar-toggler').attr('aria-expanded') === "true"
+			if (isExpanded){
+				console.log("is collapsed")
+				$('.greetings').fadeIn(300)
+			} else {
+				console.log("is expanded")
+				$('.greetings').fadeOut(300)
+			}
+		})
     })
 
 	$(window).on("scroll", function() {
@@ -109,7 +120,7 @@
 			"headline-grid": HeadlineGrid,
 			"job-listing-strip": JobListingStrip,
 			"social-media-button": SocialMediaButton
-		}
+		},
 	})
 </script>
 </body>

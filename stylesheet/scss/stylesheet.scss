@@ -1,7 +1,7 @@
 $header-height: 75vh;
 $navbar-height: 96px;
 
-$shadow-color: rgba(176, 187, 195, 0.31);
+$shadow-color: rgba(176, 187, 195, 0.5);
 
 $font-size-smaller: 1.1em;
 $font-size-small: 1.2em;
@@ -152,7 +152,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ghostwhite;
+  background: url("../../static/sayagata-400px.png") repeat;
 }
 
 // [#HEADER STYLE----------------------]
@@ -189,7 +189,9 @@ body {
     padding: 24px;
 
     .navbar-brand > img{
-      width: 128px;
+      width: 30vw;
+      min-width: 96px;
+      max-width: 128px;
     }
 
     .navbar-toggler{
@@ -208,26 +210,27 @@ body {
     width: 100%;
     margin-left: -24px;
     margin-right: -24px;
-    font-size: $font-size-large;
-    font-weight: 300;
-    letter-spacing: 0.05em;
     justify-content: flex-end;
-    background-color: transparentize(#fff, 0.2);
+    background-color: transparentize(#000, 0.5);
 
-    .navbar-nav > .nav-item > .nav-link {
-      width: 100%;
-      text-align: center;
-      color: transparentize(#fff, 0.3);
+    .navbar-nav > .nav-item {
+      position: relative;
 
-      &:hover{
-        color: white;
+      > .nav-link {
+        position: relative;
+        padding: 36px 24px;
+        width: 100%;
+        text-transform: uppercase;
+        text-align: center;
+        color: transparentize(#fff, 0.3);
+        font-size: $font-size-small;
+        font-weight: 400;
+        letter-spacing: 0.05em;
       }
-    }
 
-    .navbar-nav > .nav-item.active > .nav-link {
-      color: transparentize(#fff, 0.1);
-
-      &:hover{
+      > .nav-link:hover,
+      &.active > .nav-link,
+      &.active > .nav-link:hover {
         color: white;
       }
     }
@@ -249,6 +252,7 @@ body {
       font-weight: 700;
       letter-spacing: 0.05em;
       text-align: center;
+      padding: 0 24px;
     }
   }
 
@@ -256,7 +260,7 @@ body {
   #scroll-to-button{
     @include elevate-on-hover(8, transparentize(#fff, 0.1), white, 3rem);
     @include sizing(border-box);
-    @include anim-bounce(3px);
+    @include anim-bounce(5px);
     position: absolute;
     left: calc((100% - #{$scroll-to-button-width}) / 2);
     bottom: 1.5rem;
@@ -428,24 +432,23 @@ body {
       width: 100vw;
       margin-left: 0;
       margin-right: 0;
-      font-size: $font-size-small;
-      font-weight: 400;
       letter-spacing: 0.05em;
       justify-content: flex-end;
       background-color: transparent;
 
-      .navbar-nav > .nav-item > .nav-link {
-        color: transparentize(#fff, 0.3);
-
-        &:hover{
-          color: white;
+      .navbar-nav > .nav-item {
+        > .nav-link {
+          height: 100%;
+          font-size: $font-size-small;
+          font-weight: 400;
+          text-transform: none;
+          padding: 0;
+          color: transparentize(#fff, 0.3);
         }
-      }
 
-      .navbar-nav > .nav-item.active > .nav-link {
-        color: transparentize(#fff, 0.1);
-
-        &:hover{
+        > .nav-link:hover,
+        &.active > .nav-link,
+        &.active > .nav-link:hover {
           color: white;
         }
       }

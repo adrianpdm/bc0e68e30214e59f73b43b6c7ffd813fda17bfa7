@@ -15,9 +15,9 @@
   background-color: white;
   padding: 0;
   margin: 0;
-  -webkit-box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.31);
-  -moz-box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.31);
-  box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.31);
+  -webkit-box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.5);
+  -moz-box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.5);
+  box-shadow: 0 0 54px 0 rgba(176, 187, 195, 0.5);
 }
 
 .btn {
@@ -50,7 +50,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ghostwhite;
+  background: url("../../static/sayagata-400px.png") repeat;
 }
 
 #header {
@@ -92,7 +92,9 @@ body {
   padding: 24px;
 }
 #header .navbar .navbar-brand > img {
-  width: 128px;
+  width: 30vw;
+  min-width: 96px;
+  max-width: 128px;
 }
 #header .navbar .navbar-toggler {
   border: none !important;
@@ -107,24 +109,24 @@ body {
   width: 100%;
   margin-left: -24px;
   margin-right: -24px;
-  font-size: 1.8em;
-  font-weight: 300;
-  letter-spacing: 0.05em;
   justify-content: flex-end;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#header #navbar-header .navbar-nav > .nav-item {
+  position: relative;
 }
 #header #navbar-header .navbar-nav > .nav-item > .nav-link {
+  position: relative;
+  padding: 36px 24px;
   width: 100%;
+  text-transform: uppercase;
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
-#header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
-  color: white;
-}
-#header #navbar-header .navbar-nav > .nav-item.active > .nav-link {
-  color: rgba(255, 255, 255, 0.9);
-}
-#header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
+#header #navbar-header .navbar-nav > .nav-item > .nav-link:hover, #header #navbar-header .navbar-nav > .nav-item.active > .nav-link, #header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
   color: white;
 }
 #header .greetings {
@@ -146,6 +148,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-align: center;
+  padding: 0 24px;
 }
 #header #scroll-to-button {
   border-radius: 3rem;
@@ -204,11 +207,11 @@ body {
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(3px);
-    -moz-transform: translateY(3px);
-    -ms-transform: translateY(3px);
-    -o-transform: translateY(3px);
-    transform: translateY(3px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
   }
 }
 @keyframes bounce {
@@ -220,11 +223,11 @@ body {
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(3px);
-    -moz-transform: translateY(3px);
-    -ms-transform: translateY(3px);
-    -o-transform: translateY(3px);
-    transform: translateY(3px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
   }
 }
 #header #scroll-to-button > span.icon {
@@ -271,9 +274,9 @@ body {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -webkit-box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
-  -moz-box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
-  box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.31);
+  -webkit-box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.5);
+  -moz-box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.5);
+  box-shadow: 0 1px calc(4 * 8px) -2px rgba(176, 187, 195, 0.5);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -297,9 +300,9 @@ body {
   -ms-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
-  -webkit-box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
-  -moz-box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
-  box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.31);
+  -webkit-box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.5);
+  -moz-box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.5);
+  box-shadow: 0 2px calc(4 * 12px) -2px rgba(176, 187, 195, 0.5);
   opacity: 0;
 }
 .job-listing-strip:hover::before {
@@ -411,22 +414,19 @@ body {
     width: 100vw;
     margin-left: 0;
     margin-right: 0;
-    font-size: 1.2em;
-    font-weight: 400;
     letter-spacing: 0.05em;
     justify-content: flex-end;
     background-color: transparent;
   }
   #header #navbar-header .navbar-nav > .nav-item > .nav-link {
+    height: 100%;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-transform: none;
+    padding: 0;
     color: rgba(255, 255, 255, 0.7);
   }
-  #header #navbar-header .navbar-nav > .nav-item > .nav-link:hover {
-    color: white;
-  }
-  #header #navbar-header .navbar-nav > .nav-item.active > .nav-link {
-    color: rgba(255, 255, 255, 0.9);
-  }
-  #header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
+  #header #navbar-header .navbar-nav > .nav-item > .nav-link:hover, #header #navbar-header .navbar-nav > .nav-item.active > .nav-link, #header #navbar-header .navbar-nav > .nav-item.active > .nav-link:hover {
     color: white;
   }
   #header .navbar-nav > .nav-item + .nav-item {

@@ -22,12 +22,17 @@ const NavigationBar = {
 				`<div class="collapse navbar-collapse" id="navbar-header">`+
 					`<ul class="navbar-nav">`+
 						`<template v-for="(item, i) in menu">`+
-							`<li class="nav-item" :class="{'active': item.isActive}" :key="'item-'+i">`+
+							`<li class="nav-item nav-item-container" :class="{'active': item.isActive}" :key="'item-'+i">`+
 								`<a class="nav-link" href="#">{{item.name}}</a>`+
 							`</li>`+
 						`</template>`+
 					`</ul>`+
+					`<slot></slot>`+
 				`</div>`+
 			`</nav>`+
 		`</div>`
+	,
+	methods: {
+
+	}
 }
